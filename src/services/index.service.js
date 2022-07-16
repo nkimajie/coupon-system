@@ -13,12 +13,27 @@ module.exports = class EnrollmentService {
 
 
     /**
-     * add shop to business
-     * @param {object} data
+     * get all cart item
+     * @return {object} data
      */
-    async addBusinessShop(data) {
-        const shop = await this.BusinessShopRepository.create({ ...data });
-        return _.omit(shop.toJSON(), ['createdAt', 'updatedAt']);
+    async getAllCartItem() {
+        return await this.cartRepository.findAll();
+    }
+
+    /**
+     * add cart item
+     * @return {object} data
+     */
+    async addCartItem(data) {
+        return await this.cartRepository.create({...data});
+    }
+
+     /**
+     * cart balance
+     * @return {object} data
+     */
+      async getCartBalance() {
+        return await this.cartRepository.getCartBalance();
     }
 
 

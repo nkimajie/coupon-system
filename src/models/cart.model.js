@@ -18,7 +18,11 @@ Cart.init({
         unique: true,
         defaultValue: Sequelize.UUIDV4,
     },
-    localGovernment: {
+    name: {
+        type: Sequelize.STRING(255),
+        allowNull: false,
+    },
+    price: {
         type: Sequelize.STRING(255),
         allowNull: false,
     },
@@ -31,7 +35,7 @@ Cart.init({
         defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
     },
 }, {
-    tableName: 'datalite_lgas',
+    tableName: 'data_cart_item',
     underscored: false,
     timestamps: true,
     sequelize: DB,

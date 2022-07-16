@@ -13,8 +13,30 @@ module.exports = class IndexController {
      * @param {express.object} res
      * @return {object} json  with user data
      */
-    async getCart(req, res) {
-        return res.data(await this.indexService.getCart());
+    async getAllCartItem(req, res) {
+        const cart = await this.indexService.getAllCartItem();
+        const total = await this.indexService.getCartBalance();
+        return res.data({totalAmount: total, cartItems: cart});
     }
+
+    /**
+     * add to cart
+     * @param {express.object} req
+     * @param {express.object} res
+     * @return {object} json  with user data
+     */
+     async addCartItem(req, res) {
+        return res.data(await this.indexService.addCartItem(req.body));
+    }
+
+    /**
+     * add to coupon rules
+     * @param {express.object} req
+     * @param {express.object} res
+     * @return {object} json  with user data
+     */
+     async addCouponRules(req, res) {
+       return res.data(await this.indexService.addCartItem(req.body));
+   }
 
 };

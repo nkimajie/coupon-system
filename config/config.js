@@ -1,12 +1,30 @@
+require('dotenv').config();
+
+const {
+    NODE_ENV,
+    JWT_SECRET_KEY,
+    PORT,
+    MYSQL_USER,
+    MYSQL_PASSWORD,
+    MYSQL_HOST,
+    MYSQL_PORT,
+    MYSQL_NAME,
+    MYSQL_DIALECT,
+} = process.env;
+
 
 module.exports = {
-    port: 2022,
+    appEnv: NODE_ENV,
+    port: PORT || 2022,
     database: {
-        username: "root",
-        password: "",
-        database: "cart",
-        host: 'localhost',
-        port: 3306,
-        dialect: 'mysql',
+        username: MYSQL_USER,
+        password: MYSQL_PASSWORD,
+        database: MYSQL_NAME,
+        host: MYSQL_HOST,
+        port: MYSQL_PORT,
+        dialect: MYSQL_DIALECT,
+    },
+    auth: {
+        secret: JWT_SECRET_KEY,
     },
 };

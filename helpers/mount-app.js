@@ -1,9 +1,10 @@
 const express = require('express');
+const morgan = require('morgan');
 const cors = require('cors');
 const customResponse = require('./express-response');
 const AppError = require('./error');
 const container = require('../ioc-container');
-const prefix = "api/v1";
+const prefix = "/api/v1";
 const { indexRoutes } = require('../src/index');
 const winston = require('winston');
 
@@ -11,7 +12,7 @@ const winston = require('winston');
 /**
  * @type {winston.Logger}
  */
-// const logger = container.resolve('logger');
+const logger = container.resolve('logger');
 
 /**
  * Load app and mount endpoints
@@ -35,6 +36,8 @@ module.exports = function mountApp(app) {
         }
         next();
     });
+
+    app.use(morgan('combined', { stream: logger.stream }));
 
 
     app.get(`${prefix}`, (_req, res) =>

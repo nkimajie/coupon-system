@@ -2,6 +2,9 @@
 const awilix = require('awilix');
 const $ = require('express-async-handler');
 const router = require('express').Router();
+const Validator = require('../../helpers/validator');
+const indexSchema = require('../validators/index.validator');
+
 
 /**
  * index routes
@@ -11,8 +14,18 @@ const router = require('express').Router();
 module.exports.loadIndexRoutes = function loadIndexRoutes(container) {
     const indexController = container.resolve('indexController');
 
-    router.route('/get-cart').get(
-        $((...args) => indexController.getCart(...args)),
+    router.route('/get-all-cart-item').get(
+        $((...args) => indexController.getAllCartItem(...args)),
+    );
+
+    router.route('/add-cart-item').post(
+        Validator(indexSchema.addCartItem),
+        $((...args) => indexController.addCartItem(...args)),
+    );
+
+    router.route('/add-coupon-rules').post(
+        Validator(indexSchema.addCouponRules),
+        $((...args) => indexController.addCouponRules(...args)),
     );
 
     return router;

@@ -49,5 +49,4 @@ module.exports = class IndexController {
          const { coupon } = req.query;
         return res.data(await this.indexService.applyCouponToCart(coupon));
     }
-
 };

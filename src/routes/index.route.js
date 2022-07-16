@@ -28,5 +28,9 @@ module.exports.loadIndexRoutes = function loadIndexRoutes(container) {
         $((...args) => indexController.addCouponRules(...args)),
     );
 
+    router.route('/apply-coupon-to-cart').get(
+        $((...args) => indexController.applyCouponToCart(...args)),
+    );
+
     return router;
 };

@@ -1,0 +1,29 @@
+{
+  "name": "coupon-system",
+  "version": "1.0.0",
+  "description": "coupon system",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nkimajie/coupon-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nkimajie/coupon-system/issues"
+  },
+  "homepage": "https://github.com/nkimajie/coupon-system#readme",
+  "dependencies": {
+    "awilix": "^7.0.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.3",
+    "winston": "^3.8.1"
+  }
+}
